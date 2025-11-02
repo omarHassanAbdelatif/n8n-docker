@@ -1,7 +1,13 @@
-# Use the official n8n image
-FROM n8nio/n8n:latest
+# Use Node.js base image
+FROM node:20-bullseye
 
-# Expose Render port
+# Create app directory
+WORKDIR /app
+
+# Install n8n globally
+RUN npm install -g n8n
+
+# Expose the port Render expects
 ENV N8N_PORT=10000
 ENV N8N_HOST=0.0.0.0
 ENV N8N_PROTOCOL=https
